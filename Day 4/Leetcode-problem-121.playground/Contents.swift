@@ -6,7 +6,7 @@ func maxProfit(_ prices: [Int]) -> Int {
     var maximum = 0
     var min = Int.max
     
-    for (idx, price) in  prices.enumerated() {
+    for price in prices {
         if price < min {
             min = price
         } else {
