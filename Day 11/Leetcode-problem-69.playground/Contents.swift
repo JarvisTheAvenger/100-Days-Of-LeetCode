@@ -18,7 +18,7 @@ func mySqrtWithBinarySearch(_ x: Int) -> Int {
     var ans = 0
     
     while (start <= end) {
-        var mid = (start + end) / 2
+        let mid = (start + end) / 2
         
         // If x is a perfect square
         if (mid*mid == x) {
@@ -41,4 +41,4 @@ func mySqrtWithBinarySearch(_ x: Int) -> Int {
 }
 
 mySqrt(2)
-mySqrtWithBinarySearch(2)
+mySqrtWithBinarySearch(9)
