@@ -23,4 +23,12 @@ func missingNumber(_ nums: [Int]) -> Int {
     return -1
 }
 
-missingNumber([9,6,4,2,3,5,7,0,1])
+func missingNumberWithoutExtraSpace(_ nums: [Int]) -> Int {
+    var sum = 0
+    for el in nums { sum += el }
+    let n = nums.count
+    return (n * (n+1)) / 2 - sum
+}
+
+//missingNumber([9,6,4,2,3,5,7,0,1])
+missingNumberWithoutExtraSpace([9,6,4,2,3,5,7,0,1])
