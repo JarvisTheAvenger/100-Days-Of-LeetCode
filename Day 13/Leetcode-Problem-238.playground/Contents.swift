@@ -14,9 +14,7 @@ func productExceptSelf(_ nums: [Int]) -> [Int] {
         leftProduct *= num
         left.append(leftProduct)
     }
-    
-    print(left)
-    
+        
     var rightProduct = 1
     
     for num in nums.reversed() {
@@ -40,4 +38,29 @@ func productExceptSelf(_ nums: [Int]) -> [Int] {
     return result
 }
 
-productExceptSelf([-1,1,0,-3,3])
+
+func productExceptSelfWithoutExtraSpace(_ nums: [Int]) -> [Int] {
+    var result = [Int]()
+    var product = 1
+    
+    for num in nums {
+        product *= num
+        result.append(product)
+    }
+        
+    product = 1
+    
+    for idx in Array((0..<nums.count).reversed()) {
+        if idx != 0 {
+            result[idx] = result[idx-1] * product
+            product *= nums[idx]
+        }
+    }
+    
+    result[0] = product
+        
+    return result
+}
+
+
+productExceptSelfWithoutExtraSpace([1,2,3,4])
