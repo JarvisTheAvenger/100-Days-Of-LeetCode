@@ -22,7 +22,7 @@ func myPow(_ x: Double, _ n: Int) -> Double {
     }
 
 
-    if n.signum() == -1 {
+    if n < 0 {
         return 1 / product
     }
 
