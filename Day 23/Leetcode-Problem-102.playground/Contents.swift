@@ -15,7 +15,7 @@ public class TreeNode {
     }
 }
  
-
+// 1. Iterative Solution
 func levelOrder(_ root: TreeNode?) -> [[Int]] {
     guard root != nil else { return [] }
     
@@ -42,4 +42,26 @@ func levelOrder(_ root: TreeNode?) -> [[Int]] {
     }
             
     return result
+}
+
+
+// 2. Recursive Solution
+class Solution {
+    var results: [[Int]] = []
+
+    func levelOrder(_ root: TreeNode?) -> [[Int]] {
+        add(root, 0)
+        return results
+    }
+    
+    func add(_ root: TreeNode?, _ index: Int) {
+        guard let root = root else { return }
+        if results.count < index + 1 {
+            results.append([])
+        }
+        results[index].append(root.val)
+        
+        add(root.left, index + 1)
+        add(root.right, index + 1)
+    }
 }
