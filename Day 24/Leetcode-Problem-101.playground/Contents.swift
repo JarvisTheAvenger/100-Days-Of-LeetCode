@@ -50,4 +50,20 @@ class Solution {
         return true
         
     }
+    
+    func isSymmetricRecursion(_ root: TreeNode?) -> Bool {
+        
+        func isSame(_ p: TreeNode?, _ q: TreeNode?) -> Bool {
+            if p == nil && q == nil { return true }
+            if p == nil || q == nil { return false }
+            
+            if (p?.val != q?.val) {
+                return false
+            }
+            
+            return isSame(p?.left, q?.right) && isSame(p?.right, q?.left)
+        }
+        
+        return isSame(root?.left, root?.right)
+    }
 }
