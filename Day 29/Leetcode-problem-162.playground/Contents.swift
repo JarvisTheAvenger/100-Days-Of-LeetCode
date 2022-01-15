@@ -35,35 +35,21 @@ func findPeakElementBruteForceMethod(_ nums: [Int]) -> Int {
 
 
 func findPeakElement(_ nums: [Int]) -> Int {
-    guard nums.count <= 1 else { return -1 }
+    var left =  0
+    var right = nums.count-1
     
-    let left =  0
-    let right = nums.count-1
-
-    return findPeak(nums, left: left, right: right)
-}
-
-func findPeak(_ nums: [Int], left: Int, right: Int) -> Int {
-    // 1. find the mid element
-    let mid = left + (right-left) / 2
-    print(mid)
-    
-    // 2. find if left and right of mid is not out of bound
-    let i = mid-1
-    let j = mid+1
-    
-    
-    if i < 0 && j < nums.count-1 {
-        // 3. check if mid element is a peak
-        if nums[mid] > nums[i] && nums[mid] > nums[j] {
-            return mid
+    while left < right {
+        let mid = left + (right-left) / 2
+        
+        if nums[mid] > nums[mid+1] {
+            left = mid + 1
+        } else {
+            right = mid
         }
     }
-    
-    findPeak(nums, left: mid+1, right: nums.count-1)
-    findPeak(nums, left: 0, right: mid-1)
-    
-    return -1
+
+    return left
 }
+
 
 findPeakElement([1,2,1,3,5,6,4])
